@@ -192,6 +192,13 @@ PRODUCT_PACKAGES += \
     vendor.display.config@2.0 \
     vendor.display.config@2.0_vendor
 
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.sys.sf.color_mode=9 \
+    persist.sys.sf.color_saturation=1.0 \
+    persist.sys.sf.native_mode=2 \
+    vendor.display.qdcm.disable_factory_mode=1 \
+    vendor.display.qdcm.mode_combine=1 \
+
 # Doze
 PRODUCT_PACKAGES += \
     XiaomiDoze
