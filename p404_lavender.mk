@@ -24,7 +24,7 @@ TARGET_VENDOR_PRODUCT_NAME := lavender
 
 # Build type
 ifeq ($(WITH_GAPPS),true)
-P404_BUILDTYPE := SHINKA-GAPPS
+P404_BUILDTYPE := tokui-Gapps
 else
-P404_BUILDTYPE := SHINKA-VANILLA
+P404_BUILDTYPE := tokui-Vanilla
 endif
