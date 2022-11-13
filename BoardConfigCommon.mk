@@ -42,6 +42,7 @@ ifeq ($(BOARD_KERNEL_COMMON),true)
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
 endif
 TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
