@@ -30,22 +30,20 @@ TARGET_2ND_CPU_VARIANT := cortex-a73
 TARGET_2ND_CPU_VARIANT_RUNTIME := kryo
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_power_aware=1 service_locator.enable=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
-BOARD_KERNEL_CMDLINE += loop.max_part=7
-BOARD_KERNEL_CMDLINE += printk.devkmsg=on
-BOARD_KERNEL_CMDLINE += usbcore.autosuspend=7
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=1 loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_CMDLINE += kpti=off
+BOARD_KERNEL_BASE        := 0x00000000
+BOARD_KERNEL_PAGESIZE    := 4096
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 KERNEL_LLVM_SUPPORT := true
 KERNEL_CUSTOM_LLVM := true
 KERNEL_CUSTOM_LLVM_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/clang-nexus
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-gnu-
-TARGET_KERNEL_CROSS_COMPILE_PREFIX_ARM32 := arm-linux-gnueabi-
-TARGET_COMPILE_WITH_MSM_KERNEL := true
+TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 TARGET_KERNEL_ADDITIONAL_FLAGS += LLVM=1 LLVM_IAS=1 AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip
@@ -67,7 +65,6 @@ AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := false
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 RELAX_USES_LIBRARY_CHECK := true
 BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
-
 
 # Bluetooth
 TARGET_USE_QTI_BT_STACK := true
